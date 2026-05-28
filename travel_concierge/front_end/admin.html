@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Concierge - Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body class="admin-body">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Travel Concierge</p>
+        <h1>Admin Operations</h1>
+      </div>
+      <a class="toplink" href="/ui/user">Go to User UI</a>
+    </header>
+
+    <main class="admin-shell card">
+      <div class="admin-controls">
+        <div class="control-row">
+          <label for="adminKey">Admin API Key</label>
+          <input id="adminKey" type="password" placeholder="required" />
+        </div>
+
+        <div class="control-row">
+          <label for="operation">Operation</label>
+          <select id="operation">
+            <option value="guests">List Guests</option>
+            <option value="bookings">List All Bookings</option>
+            <option value="bookingById">Get Booking By ID</option>
+            <option value="bookingsByGuest">List Guest Bookings</option>
+            <option value="paymentSummary">Payment Summary</option>
+          </select>
+        </div>
+
+        <div class="control-row" id="bookingIdRow">
+          <label for="bookingId">Booking ID</label>
+          <input id="bookingId" placeholder="required for Get Booking By ID" />
+        </div>
+
+        <div class="control-row" id="guestIdRow">
+          <label for="guestId">Guest ID</label>
+          <input id="guestId" placeholder="required for List Guest Bookings" />
+        </div>
+
+        <div class="control-row" id="statusRow">
+          <label for="statusFilter">Booking Status</label>
+          <select id="statusFilter">
+            <option value="">(none)</option>
+            <option value="PENDING">PENDING</option>
+            <option value="CONFIRMED">CONFIRMED</option>
+            <option value="CANCELLED">CANCELLED</option>
+            <option value="COMPLETED">COMPLETED</option>
+          </select>
+        </div>
+
+        <div class="control-row" id="paymentStatusRow">
+          <label for="paymentStatusFilter">Payment Status</label>
+          <select id="paymentStatusFilter">
+            <option value="">(none)</option>
+            <option value="PENDING">PENDING</option>
+            <option value="PAID">PAID</option>
+            <option value="FAILED">FAILED</option>
+            <option value="REFUNDED">REFUNDED</option>
+          </select>
+        </div>
+
+        <button id="runOperationBtn" class="cta">Run Operation</button>
+      </div>
+
+      <section>
+        <h2>Result</h2>
+        <pre id="adminResult" class="result-panel">Run an operation to load data.</pre>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

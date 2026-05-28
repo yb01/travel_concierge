@@ -251,15 +251,17 @@ This project also includes a dedicated FastAPI app for booking operations and ad
 Run it locally:
 
 ```bash
-export TRAVEL_CONCIERGE_USER_API_KEY=replace-with-user-key
 export TRAVEL_CONCIERGE_ADMIN_API_KEY=replace-with-admin-key
 uv run uvicorn travel_concierge.api.main:app --reload
 ```
 
 Open API docs at http://127.0.0.1:8000/docs.
+Open browser UI pages:
+- User UI: http://127.0.0.1:8000/ui/user
+- Admin UI: http://127.0.0.1:8000/ui/admin
 
 Authentication:
-- User endpoints require header `X-API-Key: <TRAVEL_CONCIERGE_USER_API_KEY>`
+- User endpoints require header `X-API-Key: <TRAVEL_CONCIERGE_USER_API_KEY>`. If `TRAVEL_CONCIERGE_USER_API_KEY` is not set, the API accepts the demo key `demo-user-key` for local UI sessions.
 - Admin endpoints require header `X-Admin-API-Key: <TRAVEL_CONCIERGE_ADMIN_API_KEY>`
 
 User-facing endpoints are under `/api/v1/user` and proxy to the ADK agent runtime:

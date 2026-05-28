@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Concierge - User</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body class="user-body">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Travel Concierge</p>
+        <h1>User Workspace</h1>
+      </div>
+      <a class="toplink" href="/ui/admin">Go to Admin</a>
+    </header>
+
+    <main class="user-grid">
+      <section class="chat-pane card">
+        <div class="session-header">
+          <h2>Sessions</h2>
+          <button id="newSessionBtn" class="cta small">New Session</button>
+        </div>
+
+        <p id="userIdentity" class="session-meta"></p>
+
+        <div class="api-key-row">
+          <label for="userApiKey">User API Key</label>
+          <input id="userApiKey" value="demo-user-key" />
+        </div>
+
+        <ul id="sessionList" class="session-list"></ul>
+
+        <div id="messages" class="messages"></div>
+
+        <form id="chatForm" class="composer">
+          <input id="messageInput" placeholder="Ask about destinations, planning, or in-trip help..." required />
+          <button type="submit" class="cta">Send</button>
+        </form>
+      </section>
+
+      <aside class="visual-pane card">
+        <h2>Concierge Studio</h2>
+        <p class="subtitle">Switch between inspiration, itinerary signals, and event trace.</p>
+
+        <div class="tab-strip" role="tablist" aria-label="User context views">
+          <button class="tab-btn active" data-tab="photos" role="tab" aria-selected="true">Photos</button>
+          <button class="tab-btn" data-tab="itinerary" role="tab" aria-selected="false">Itinerary</button>
+          <button class="tab-btn" data-tab="trace" role="tab" aria-selected="false">Trace</button>
+        </div>
+
+        <section id="panelPhotos" class="tab-panel active" role="tabpanel">
+          <div id="heroImage" class="hero-image" aria-label="Travel inspiration image"></div>
+        </section>
+
+        <section id="panelItinerary" class="tab-panel" role="tabpanel" hidden>
+          <div id="itineraryCards" class="itinerary-cards"></div>
+        </section>
+
+        <section id="panelTrace" class="tab-panel" role="tabpanel" hidden>
+          <div id="eventList" class="event-list"></div>
+        </section>
+      </aside>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
