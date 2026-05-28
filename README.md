@@ -244,6 +244,37 @@ python tests/programmatic_example.py
 
 You may notice that there are code to handle function responses. We will revisit this in the [GUI](#gui) section below.
 
+### Project REST API (User + Admin)
+
+This project also includes a dedicated FastAPI app for booking operations and admin workflows.
+
+Run it locally:
+
+```bash
+export TRAVEL_CONCIERGE_USER_API_KEY=replace-with-user-key
+export TRAVEL_CONCIERGE_ADMIN_API_KEY=replace-with-admin-key
+uv run uvicorn travel_concierge.api.main:app --reload
+```
+
+Open API docs at http://127.0.0.1:8000/docs.
+
+Authentication:
+- User endpoints require header `X-API-Key: <TRAVEL_CONCIERGE_USER_API_KEY>`
+- Admin endpoints require header `X-Admin-API-Key: <TRAVEL_CONCIERGE_ADMIN_API_KEY>`
+
+User-facing endpoints are under `/api/v1/user` and proxy to the ADK agent runtime:
+- `POST /api/v1/user/sessions`
+- `POST /api/v1/user/sessions/{session_id}/messages`
+
+These user APIs do not write bookings directly. Any write operation is performed by the agents through their tool calls and workflow.
+
+Admin endpoints are under `/api/v1/admin` and are read-only:
+- `GET /api/v1/admin/guests`
+- `GET /api/v1/admin/guests/{guest_id}/bookings`
+- `GET /api/v1/admin/bookings`
+- `GET /api/v1/admin/bookings/{booking_id}`
+- `GET /api/v1/admin/payments/summary`
+
 
 ### Sample Agent interaction
 
